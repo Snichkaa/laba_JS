@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список редких растений</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/table.css">
+    <script src="JavaScript/plants-data.js"></script>
+    <script src="JavaScript/table.js"></script>
+    <script src="JavaScript/filter.js"></script>
+    <script src="JavaScript/sort.js"></script>
+    <script src="JavaScript/main.js"></script>
+    
+</head>
+<body>
+    <div class="menu">
+        <p>
+            <a href= "index.html">Главная</a>
+            <a href= "table.html">Таблица</a>
+            <a href= "#">Меню_3</a>
+        </p>
+        <h3>Редкие виды растений</h3>
+    </div>
+    <details>
+        <summary><b>График</b></summary>
+        <form id="chart-form">
+            <p>
+              Ось X:<br>
+              <input type="radio" name="X-axis" value="Type"> Вид <br>
+              <input type="radio" name="X-axis" value="Distribution"> Распространение <br>
+            </p>
+            <p>
+              Результат:<br>
+              <input type="checkbox" name="result" value="centenarians"> Средняя продолжительность жизни <br>
+              <input type="checkbox" name="result" value="species"> Количество видов <br>
+              <input type="checkbox" name="result" value="height"> Максимальная высота
+            </p>
+        </form>
+    </details>
+    
+    <details>
+        <summary><b>Фильтр</b></summary>
+        <form id="filter-form">
+            <p>
+                <label>Введите название растения:
+                    <input type="text" name="name" id="name1">
+                </label>
+            </p>
+            <p>
+                <label>Введите вид:
+                    <input type="text" name="view" id="view1">
+                </label>
+            </p>
+            <p>
+                <label>Введите страну:
+                    <input type="text" name="country" id="country1">
+                </label>
+            </p>
+            <p>
+                <label>Введите продолжительность жизни: от
+                    <input type="number" name="live_min" id="live1">
+                    до:
+                    <input type="number" name="live_max" id="live2">
+                </label>
+            </p>
+            <p>
+                <label>Введите высоту растения: от
+                    <input type="number" name="height_min" id="height1">
+                    до:
+                    <input type="number" name="height_max" id="height2">
+                </label>
+            </p>
+            <button type="button" id="apply-filter">Применить фильтр</button>
+            <button type="reset">Сбросить</button>
+        </form>
+    </details>
+    
+    <details>
+        <summary><b>Сортировка</b></summary>
+        <form id="sort-form">
+            <p>
+                <label>Первый уровень:
+                    <select name="level1">
+                        <option value="0">Нет</option>
+                        <option value="name">По названию</option>
+                        <option value="type">По виду</option>
+                        <option value="lifespan">По продолжительности жизни</option>
+                        <option value="height">По высоте</option>
+                        <option value="distribution">По распространению</option>
+                    </select>
+                    <input type="checkbox" name="level1_desc"> По убыванию
+                </label>
+            </p>
+            <p>
+                <label>Второй уровень:
+                    <select name="level2">
+                        <option value="0">Нет</option>
+                        <option value="name">По названию</option>
+                        <option value="type">По виду</option>
+                        <option value="lifespan">По продолжительности жизни</option>
+                        <option value="height">По высоте</option>
+                        <option value="distribution">По распространению</option>
+                    </select>
+                    <input type="checkbox" name="level2_desc"> По убыванию
+                </label>
+            </p>
+            <p>
+                <label>Третий уровень:
+                    <select name="level3">
+                        <option value="0">Нет</option>
+                        <option value="name">По названию</option>
+                        <option value="type">По виду</option>
+                        <option value="lifespan">По продолжительности жизни</option>
+                        <option value="height">По высоте</option>
+                        <option value="distribution">По распространению</option>
+                    </select>
+                    <input type="checkbox" name="level3_desc"> По убыванию
+                </label>
+            </p>
+            <button type="button" id="apply-sort">Применить сортировку</button>
+            <button type="reset">Сбросить</button>
+        </form>
+    </details>
+    
+    <a name="top2"></a>
+    <table id="plants-table" border="1" align="center" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Вид</th>
+                <th>Распространение</th>
+                <th>Средняя продолжительность жизни (лет)</th>
+                <th>Высота (до, м)</th>
+            </tr>
+        </thead>
+        <tbody id="plants-data">
+        </tbody>
+    </table>
+</body>
+</html>
