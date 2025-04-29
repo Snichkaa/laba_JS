@@ -54,6 +54,47 @@ hr {
     height: 100%;
     width: 50%;
 }
+
+/* Общие стили для всех кнопок */
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
+    background-color: pink;
+}
+
+button[type="button"]:hover{
+    background-color:rgb(250, 162, 176) ;
+}
+
+.error {
+    display: block;
+    margin-bottom: 10px;
+}
+
+svg {
+    width: 800px;
+    height: 400px;
+}
+
+svg text {
+    font: 8px Verdana;
+}
+
+svg path {
+    fill: none;
+    stroke: #333333;
+    width: 1px;
+}
+
 @media (max-width: 800px){
     .menu {
         background-image: none;
@@ -81,5 +122,11 @@ hr {
         grid-column: 1;
         grid-row: 1;
         border: solid lightgrey;    
+    }
+    button {
+        padding: 8px 15px;
+        font-size: 0.85em;
+        width: 100%;
+        margin: 5px 0;
     }
 }

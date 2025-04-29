@@ -55,4 +55,50 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("filter-form").reset();
         document.getElementById("sort-form");
     });
+
+    // Кнопка для скрытия/показа таблицы
+    let button = d3.select("#start");
+    let clicked = false;
+    button.on("click", function () {
+        if (clicked) {
+            d3.select("#plants-table").style("visibility", "visible");
+            button.text("Скрыть таблицу");
+        }
+        if (!clicked) {
+            d3.select("#plants-table").style("visibility", "collapse");
+            button.text("Показать таблицу");
+        }
+        clicked = !clicked;
+    });
+
+    // Кнопка для построения графика
+    let button2 = d3.select("#build-graph");
+    button2.on("click", function () {
+        let check1 = d3.select("#check1").node().checked;
+        let check2 = d3.select("#check2").node().checked;
+
+        if (!check1 && !check2) {
+            // Ни один чекбокс не выбран
+            d3.select("#error-message")
+                .text("Выберите хотя бы одно значение для Oy")
+                .style("color", "red");
+        } else {
+            // Хотя бы один чекбокс выбран
+            d3.select("#error-message").text(""); // Убираем сообщение об ошибке
+            drawGraph(plants); // Строим график
+        }
+    });
+
+    // обработчики событий для автоматического снятия ошибок
+    d3.select("#check1").on("change", function () {
+        if (d3.select("#check1").node().checked || d3.select("#check2").node().checked) {
+            d3.select("#error-message").text("");
+        }
+    });
+
+    d3.select("#check2").on("change", function () {
+        if (d3.select("#check1").node().checked || d3.select("#check2").node().checked) {
+            d3.select("#error-message").text("");
+        }
+    });
 });

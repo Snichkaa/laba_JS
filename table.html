@@ -6,11 +6,13 @@
     <title>Список редких растений</title>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/table.css">
+    <script src="http://d3js.org/d3.v7.min.js"> </script>
     <script src="JavaScript/plants-data.js"></script>
     <script src="JavaScript/table.js"></script>
     <script src="JavaScript/filter.js"></script>
     <script src="JavaScript/sort.js"></script>
     <script src="JavaScript/main.js"></script>
+    <script src="JavaScript/chart.js"></script>
     
 </head>
 <body>
@@ -27,17 +29,30 @@
         <form id="chart-form">
             <p>
               Ось X:<br>
-              <input type="radio" name="X-axis" value="Type"> Вид <br>
-              <input type="radio" name="X-axis" value="Distribution"> Распространение <br>
+              <input type="radio" name="X-axis" value="type" checked> Вид <br>
+              <input type="radio" name="X-axis" value="distribution"> Распространение <br>
             </p>
             <p>
-              Результат:<br>
-              <input type="checkbox" name="result" value="centenarians"> Средняя продолжительность жизни <br>
-              <input type="checkbox" name="result" value="species"> Количество видов <br>
-              <input type="checkbox" name="result" value="height"> Максимальная высота
+              Ось Y:<br>
+              <input type="checkbox" id="check1" checked>
+              <label for="check1">Максимальная высота</label><br>
+              <input type="checkbox" id="check2" checked>
+              <label for="check2">Минимальная высота</label><br>
             </p>
+            <label for="type">Тип графика</label>
+            <select id="type" name="type">
+                <option value="first">Гистограмма</option>
+                <option value="second">Точечный</option>
+                <option value="third">График</option>
+            </select><br><br>
+            <button type="button" id="build-graph">Построить график</button>
+            <p>
+                <span id="error-message" class="error"></span></p>
         </form>
+        <svg width="1000" height="900" style="background: #ffffff; margin: 20px 10;"></svg>
     </details>
+
+
     
     <details>
         <summary><b>Фильтр</b></summary>
@@ -122,6 +137,10 @@
             <button type="reset">Сбросить</button>
         </form>
     </details>
+
+    <form>
+        <button type="button" id="start">Скрыть таблицу</button><br><br>
+    </form>
     
     <a name="top2"></a>
     <table id="plants-table" border="1" align="center" cellspacing="0">
